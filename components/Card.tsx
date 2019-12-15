@@ -12,10 +12,7 @@ const Card: React.FC<BoxProps> = ({ children, ...props }) => {
       justifyContent="flex-start"
       rounded="lg"
       p={6}
-      mx={[0, 0, 0, 3]}
-      my={3}
       bg={bgColor[colorMode]}
-      width={["100%", "100%", "100%", "24rem"]}
       {...props}
     >
       {children}

@@ -1,6 +1,7 @@
 import {
   Box,
   Flex,
+  Grid,
   Icon,
   Image,
   Link,
@@ -64,7 +65,19 @@ const Home = () => (
             </NextLink>
           </Box>
         </HeaderWrapper>
-        <Flex justifyContent="center" flexWrap="wrap" pt={10}>
+        <Grid
+          mx="auto"
+          py={10}
+          px={[0, 0, 0, 6]}
+          maxWidth={["100%", "100%", "100%", "1200px"]}
+          templateColumns={[
+            "repeat(1, 1fr)",
+            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
+            "repeat(3, 1fr)"
+          ]}
+          gap={6}
+        >
           <Card>
             <Box height="45px" width="45px">
               <Image src="/LogoWAK.png" />
@@ -119,7 +132,7 @@ const Home = () => (
               A platform for museums to build audio tour apps
             </CardCaption>
           </Card>
-        </Flex>
+        </Grid>
       </Box>
       <Box>
         <HeaderWrapper>
@@ -142,8 +155,20 @@ const Home = () => (
             </NextLink>
           </Box>
         </HeaderWrapper>
-        <Flex justifyContent="center" flexWrap="wrap" pt={10}>
-          <Card width={["100%", "100%", "100%", "36rem"]}>
+        <Grid
+          mx="auto"
+          py={10}
+          px={[0, 0, 0, 6]}
+          maxWidth={["100%", "100%", "100%", "1200px"]}
+          templateColumns={[
+            "repeat(1, 1fr)",
+            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
+            "repeat(2, 1fr)"
+          ]}
+          gap={6}
+        >
+          <Card>
             <CardTitle>Relaunching my personal website</CardTitle>
             <CardCaption>
               The current website at johnkueh.com was created late last year. I
@@ -151,7 +176,7 @@ const Home = () => (
             </CardCaption>
             <CardFooter>14 December 2019</CardFooter>
           </Card>
-          <Card width={["100%", "100%", "100%", "36rem"]}>
+          <Card>
             <CardTitle>Relaunching my personal website</CardTitle>
             <CardCaption>
               The current website at johnkueh.com was created late last year. I
@@ -159,7 +184,7 @@ const Home = () => (
             </CardCaption>
             <CardFooter>14 December 2019</CardFooter>
           </Card>
-        </Flex>
+        </Grid>
       </Box>
       <Box>
         <HeaderWrapper>
@@ -173,8 +198,20 @@ const Home = () => (
           </Text>
         </HeaderWrapper>
         <Box pt={10}>
-          <Flex justifyContent="center" flexWrap="wrap" pt={10}>
-            <Card width={["100%", "100%", "100%", "36rem"]}>
+          <Grid
+            mx="auto"
+            py={10}
+            px={[0, 0, 0, 6]}
+            maxWidth={["100%", "100%", "100%", "1200px"]}
+            templateColumns={[
+              "repeat(1, 1fr)",
+              "repeat(1, 1fr)",
+              "repeat(2, 1fr)",
+              "repeat(2, 1fr)"
+            ]}
+            gap={6}
+          >
+            <Card>
               <Box height="70px" width="60px">
                 <Image src="/LogoCanva.png" />
               </Box>
@@ -194,7 +231,7 @@ const Home = () => (
                 &nbsp;- Product designer at Canva
               </CardFooter>
             </Card>
-            <Card width={["100%", "100%", "100%", "36rem"]}>
+            <Card>
               <Box height="70px" width="230px">
                 <Image src="/LogoMseq.png" />
               </Box>
@@ -211,7 +248,7 @@ const Home = () => (
                 Phil Morle - Partner at Main Sequence Ventures
               </CardFooter>
             </Card>
-            <Card width={["100%", "100%", "100%", "36rem"]}>
+            <Card>
               <Box height="70px" width="135px">
                 <Image src="/LogoIBM.png" />
               </Box>
@@ -234,7 +271,7 @@ const Home = () => (
                 &nbsp;- Gold
               </CardFooter>
             </Card>
-            <Card width={["100%", "100%", "100%", "36rem"]}>
+            <Card>
               <Box height="70px" width="60px">
                 <Image src="/LogoBigW.png" />
               </Box>
@@ -256,7 +293,7 @@ const Home = () => (
                 &nbsp;by InsideRetail
               </CardFooter>
             </Card>
-          </Flex>
+          </Grid>
         </Box>
         <HeaderWrapper pt={20}>
           <Box maxWidth={["100%", "100%", "100%", "768px"]}>

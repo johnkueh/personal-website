@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Image, Text } from "@chakra-ui/core";
+import { Badge, Box, Flex, Grid, Image, Text } from "@chakra-ui/core";
 import React from "react";
 import Card from "../components/Card";
 import CardCaption from "../components/CardCaption";
@@ -25,7 +25,19 @@ const Projects = () => (
           </Box>
         </HeaderWrapper>
 
-        <Flex justifyContent="center" flexWrap="wrap" pt={10}>
+        <Grid
+          mx="auto"
+          py={10}
+          px={[0, 0, 0, 6]}
+          maxWidth={["100%", "100%", "100%", "1200px"]}
+          templateColumns={[
+            "repeat(1, 1fr)",
+            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
+            "repeat(3, 1fr)"
+          ]}
+          gap={6}
+        >
           <Card>
             <Box height="45px" width="45px">
               <Image src="/LogoWAK.png" />
@@ -103,7 +115,20 @@ const Projects = () => (
               Beacons
             </CardFooter>
           </Card>
-        </Flex>
+          <Card>
+            <Box height="45px" width="45px">
+              <Image rounded="md" src="/LogoBeaconmaker.png" />
+            </Box>
+            <CardTitle mt={3}>Beaconmaker</CardTitle>
+            <CardCaption>
+              A platform for museums to build audio tour apps
+            </CardCaption>
+            <CardFooter fontSize={16}>
+              React, Contentful API, React Native, Expo, Swift, Bluetooth
+              Beacons
+            </CardFooter>
+          </Card>
+        </Grid>
       </Box>
     </Box>
   </>
