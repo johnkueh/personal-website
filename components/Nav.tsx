@@ -1,7 +1,8 @@
-import { Button, Flex, PseudoBox, Text, useColorMode } from "@chakra-ui/core";
+import { Flex, PseudoBox, Text, useColorMode } from "@chakra-ui/core";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import PrimaryButton from "./PrimaryButton";
 
 const Nav: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -19,14 +20,9 @@ const Nav: React.FC = () => {
         <Link href="/projects" label="Projects" />
         <Link href="/articles" label="Articles" />
       </Flex>
-      <Button
-        bg="red.500"
-        color="white"
-        size="sm"
-        rightIcon={() => <Text ml={2}>👉</Text>}
-      >
+      <PrimaryButton size="sm" rightIcon={() => <Text ml={2}>👉</Text>}>
         Contact
-      </Button>
+      </PrimaryButton>
     </Flex>
   );
 };
