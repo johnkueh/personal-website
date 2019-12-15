@@ -117,11 +117,49 @@ const Projects = () => (
           </Card>
           <Card>
             <Box height="45px" width="45px">
-              <Image rounded="md" src="/LogoBeaconmaker.png" />
+              <Image rounded="md" src="/LogoSydneyOpen.jpg" />
             </Box>
-            <CardTitle mt={3}>Beaconmaker</CardTitle>
+            <CardTitle mt={3}>Sydney Open</CardTitle>
             <CardCaption>
-              A platform for museums to build audio tour apps
+              An app to explore Sydney City on this open day
+            </CardCaption>
+            <CardFooter fontSize={16}>
+              React, Contentful API, React Native, Expo, Swift, ARKit
+            </CardFooter>
+          </Card>
+          <Card>
+            <Box height="45px" width="45px">
+              <Image rounded="md" src="/LogoAMGames.png" />
+            </Box>
+            <CardTitle mt={3}>AR Whale Trail</CardTitle>
+            <CardCaption>
+              An augmented reality app to look for hidden whales!
+            </CardCaption>
+            <CardFooter fontSize={16}>
+              React, Contentful API, React Native, Expo, Swift, ARKit
+            </CardFooter>
+          </Card>
+          <Card>
+            <Box height="45px" width="45px">
+              <Image rounded="md" src="/LogoAMApp.png" />
+            </Box>
+            <CardTitle mt={3}>Westpac 200 Treasure Hunt</CardTitle>
+            <CardCaption>
+              A treasure hunt app to look for objects around the museum.
+            </CardCaption>
+            <CardFooter fontSize={16}>
+              React, Contentful API, React Native, Expo, Swift, Bluetooth
+              Beacons
+            </CardFooter>
+          </Card>
+          <Card>
+            <Box height="45px" width="45px">
+              <Image rounded="md" src="/LogoEggscape.png" />
+            </Box>
+            <CardTitle mt={3}>BIG W Easter Egg Hunt</CardTitle>
+            <CardCaption>
+              A treasure hunt app to look for virtual easter eggs in retail
+              stores.
             </CardCaption>
             <CardFooter fontSize={16}>
               React, Contentful API, React Native, Expo, Swift, Bluetooth
