@@ -1,16 +1,16 @@
-import React from "react";
 import {
   Box,
-  Button,
-  ThemeProvider,
   ColorModeProvider,
-  useColorMode,
-  CSSReset
+  CSSReset,
+  ThemeProvider,
+  useColorMode
 } from "@chakra-ui/core";
+import React from "react";
+import theme from "../theme";
 
 const MainLayout: React.FC = ({ children }) => {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <CSSReset />
       <ColorModeProvider>
         <ColorModeLayout>

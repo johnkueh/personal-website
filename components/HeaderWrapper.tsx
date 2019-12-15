@@ -1,5 +1,5 @@
-import React from "react";
 import { Box, BoxProps } from "@chakra-ui/core";
+import React from "react";
 
 const HeaderWrapper: React.FC<BoxProps> = ({ children, ...props }) => (
   <Box
