@@ -62,7 +62,7 @@ export default frontMatter => {
   };
 };
 
-const contentStyles = css`
+export const contentStyles = css`
   .content {
     h2,
     h3 {

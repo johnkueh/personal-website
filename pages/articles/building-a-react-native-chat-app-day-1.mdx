@@ -1,0 +1,93 @@
+---
+layout: "Article"
+date: "14-12-2019"
+title: "Building a React Native chat app - Day 1"
+caption: "Project Planning, Setting Up Navigation, and Building Authentication Screen"
+featured: true
+---
+
+import { Code } from "@chakra-ui/core";
+
+Today we will be building an APP and a WEBSITE where dog owners can chat with potential sitters.
+
+This tutorial assumes that you have a basic to intermediate understanding of:
+
+- Javascript / Typescript and
+- React / React Native
+
+## Project name
+
+PawChat
+
+## Project requirements
+
+- As a pet owner, I should be able to sign up/log in to my account
+- As a dog sitter, I should be able to sign up/log in to my account
+- As a dog owner, I should be able to see a list of dog sitters
+- As a pet owner, I should be able to chat with a dog sitter
+- As a dog sitter, I should be able to see a list of dog owners
+- As a dog sitter, I should be able to chat with a dog owner
+- As a user, I should be able to upload dog photos
+- As a user, given I am not online, I should get a notification if a message arrives
+- All the features above should be replicated on the web, and be in-sync with the mobile app
+
+## Users
+
+- Pet owner - Michele
+- Dog sitters - Elise and Imy
+- Dog - Perry
+
+Let's begin with the mobile app.
+
+### Step 1: INSTALL EXPO.
+
+Expo enables us to build iOS and Android apps using Javascript and React Native without installing XCode or Android Studio.
+
+<Code>npm install -g expo-cli expo init</Code>
+
+Follow the on-screen instructions to create a new Expo project with the name PawChat. I like to start with the blank (TypeScript) template.
+
+### Step 2: SET UP THE INTRO, REGISTER, AND LOGIN SCREEN.
+
+I like using emotion because it makes writing styles in React Native feel like writing CSS… so, let’s install that:
+
+<Code>yarn add @emotion/core @emotion/native</Code>
+
+This is how it's supposed to look like:
+
+IMAGE_OF_SCREENS
+
+Get code for these screens here:
+
+- IntroScreen: LINK
+- RegisterScreen: LINK
+- LoginScreen: LINK
+
+Next, we set up a navigation system for the auth screens.
+
+### Step 3: SET UP A SIMPLE INFORMATION ARCHITECTURE (IA) FOR THIS APP
+
+AuthenticationStack
+
+- IntroScreen
+- RegisterScreen
+- Login Screen
+
+MainStack
+
+- (All other screens will be set up later)
+
+We will use the react-navigation library to achieve this.
+
+<Code>
+  yarn add @react-navigation/core @react-navigation/stack
+  @react-native-community/masked-view expo install react-native-gesture-handler
+  react-native-reanimated react-native-screens react-native-safe-area-context
+</Code>
+
+The end result that we want to achieve:
+
+VIDEO
+
+Get the code here:
+LINK

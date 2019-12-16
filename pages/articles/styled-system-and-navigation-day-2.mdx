@@ -1,0 +1,84 @@
+---
+layout: "Article"
+date: "15-12-2019"
+title: "Adding styled-system and navigation for a React Native app"
+caption: "Before we build out more screens, let's try to put some systems in place to keep ourselves happy in the future."
+featured: false
+---
+
+import { Code } from "@chakra-ui/core";
+
+## Refactoring code for theming the app
+
+Before our styling/theming code gets out of control, let's find a way to keep things DRY. First, let's try to get a theming system in place.
+
+<Code>yarn add emotion-theming</Code>
+
+Wrap our app root with a ThemeProvider, and now we can access theme variables from any emotion styled components!
+
+[Link to code]
+
+## A consistent and scalable way of defining styles
+
+We have been using Emotion for styling up the app so far. That solved the problem of being able to write css-like styles in React Native, while emotion-theming solves the problem of having a maintainable theming system.
+
+Before we build out more screens and component, we need a consistent way of defining styles like padding, margin, typography, and colours.
+
+Let's try styled-system!
+
+<Code>yarn add styled-system</Code>
+
+First, let's create a few generic but very reusable primitive components:
+
+### Refactoring buttons
+
+https://github.com/WhisperKit/PawChat/commit/0bd84fcf614a31400f352e9fa2ab5ab26df605aa
+
+### Refactoring texts
+
+https://github.com/WhisperKit/PawChat/commit/fa707b18d8076f66e42f244f5d3dba494c0faaf3
+
+### Refactoring scrollView
+
+https://github.com/WhisperKit/PawChat/commit/0162f1536e12aa1fbc2435829145ddee5600eeca
+
+## Reconfiguring our navigation stack for adding logged-in screens
+
+We want all users that are not logged in to see an introduction, register and login screens. After the user has logged in, we want to show a tabbed navigation.
+
+[Zoom Simulator Screen Shot - iPhone 11 - 2019-12-08 at 12.30.12.png]
+
+[Zoom Simulator Screen Shot - iPhone 11 - 2019-12-08 at 12.29.58.png]
+
+First, let's reconfigure our navigation stack:
+
+### AuthStackNavigator (Stack)
+
+- IntroScreen
+- RegisterScreen
+- Login Screen
+
+### MainTabNavigator (Tabs)
+
+- SitterStackNavigator
+- SitterListScreen
+- ChatStackNavigator
+- ChatScreen
+- ProfileStackNavigator
+- ProfileScreen
+
+This allows us to show the welcome/auth screens if a user has not logged in. After logging in, we show the MainTabNavigator which has all the other screens.
+
+https://github.com/WhisperKit/PawChat/commit/0b8a24a0590892296bc786554023421b8d66b402
+
+### Preparing UserContext and a useAuthed hook in anticipation of authentication features down the line
+
+We will use React.Context to globally store the user logged in state. Its a lot easier compared to using a state management library like Redux.
+
+We also create a useAuthed custom hook for handling the auth response from our server later on. For now, lets set a mock user on auth.
+
+https://github.com/WhisperKit/PawChat/commit/53b65413008f31c13e9b522e93352f292b8456fc
+
+After doing all that, here's what we have:
+
+[SCREEN]

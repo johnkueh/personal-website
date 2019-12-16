@@ -1,12 +1,13 @@
 import { Box, Flex, Grid, Icon, Image, Link, Text } from "@chakra-ui/core";
+import Head from "next/head";
 import NextLink from "next/link";
 import React from "react";
 import Card from "../components/Card";
 import CardCaption from "../components/CardCaption";
 import CardFooter from "../components/CardFooter";
-import CardTitle from "../components/CardTitle";
 import HeaderWrapper from "../components/HeaderWrapper";
 import Nav from "../components/Nav";
+import Articles from "../containers/Articles";
 import Projects from "../containers/Projects";
 import WorkWithMe from "../containers/WorkWithMe";
 
@@ -14,6 +15,9 @@ const Home = () => {
   return (
     <>
       <Nav title="Home" />
+      <Head>
+        <title>John Kueh - JavaScript engineer</title>
+      </Head>
       <Box pb={32}>
         <Box py={[10, 10, 10, 0]}>
           <HeaderWrapper>
@@ -80,36 +84,7 @@ const Home = () => {
               </NextLink>
             </Box>
           </HeaderWrapper>
-          <Grid
-            mx="auto"
-            py={10}
-            px={[0, 0, 0, 6]}
-            maxWidth={["100%", "100%", "100%", "1200px"]}
-            templateColumns={[
-              "repeat(1, 1fr)",
-              "repeat(1, 1fr)",
-              "repeat(2, 1fr)",
-              "repeat(2, 1fr)"
-            ]}
-            gap={6}
-          >
-            <Card>
-              <CardTitle>Relaunching my personal website</CardTitle>
-              <CardCaption>
-                The current website at johnkueh.com was created late last year.
-                I would like to relaunch it with a new design for the year 2020.
-              </CardCaption>
-              <CardFooter>14 December 2019</CardFooter>
-            </Card>
-            <Card>
-              <CardTitle>Relaunching my personal website</CardTitle>
-              <CardCaption>
-                The current website at johnkueh.com was created late last year.
-                I would like to relaunch it with a new design for the year 2020.
-              </CardCaption>
-              <CardFooter>14 December 2019</CardFooter>
-            </Card>
-          </Grid>
+          <Articles featured={true} />
         </Box>
         <Box>
           <HeaderWrapper>
