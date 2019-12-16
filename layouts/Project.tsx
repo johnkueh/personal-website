@@ -71,15 +71,26 @@ const contentStyles = css`
       margin-bottom: ${theme.sizes["8"]};
       font-weight: ${theme.fontWeights.extrabold};
     }
+    a {
+      color: ${theme.colors.red["500"]};
+    }
     h2 {
       font-size: ${theme.fontSizes["3xl"]};
     }
     h3 {
       font-size: ${theme.fontSizes["2xl"]};
+      margin-bottom: ${theme.sizes["4"]};
     }
     p {
       margin-bottom: ${theme.sizes["8"]};
       line-height: 28px;
+    }
+    ul li {
+      margin-left: ${theme.sizes["6"]};
+      margin-bottom: ${theme.sizes["2"]};
+    }
+    ul {
+      margin-bottom: ${theme.sizes["8"]};
     }
   }
 `;
