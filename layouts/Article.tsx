@@ -9,8 +9,6 @@ import theme from "../theme";
 
 export default frontMatter => {
   return ({ children: content }) => {
-    console.log(frontMatter.tech);
-    console.log(frontMatter.servicesUsed);
     return (
       <>
         <Head>
