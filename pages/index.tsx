@@ -23,7 +23,7 @@ import Projects from "../containers/Projects";
 const Home = () => {
   return (
     <>
-      <Nav />
+      <Nav title="Home" />
       <Box pb={32}>
         <Box>
           <HeaderWrapper>

@@ -1,53 +1,17 @@
-import { Flex, PseudoBox, Text } from "@chakra-ui/core";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
-import PrimaryButton from "./PrimaryButton";
+import NavDesktop from "./NavDesktop";
+import NavMobile from "./NavMobile";
 
-const Nav: React.FC = () => {
-  return (
-    <Flex
-      alignItems="center"
-      justifyContent="space-between"
-      maxWidth={["100%", "100%", "100%", "968px"]}
-      mx="auto"
-      py={2}
-    >
-      <Flex fontSize={16}>
-        <Link href="/" label="Home" />
-        <Link href="/about" label="About" />
-        <Link href="/projects" label="Projects" />
-        <Link href="/articles" label="Articles" />
-      </Flex>
-      <PrimaryButton size="sm" rightIcon={() => <Text ml={2}>👉</Text>}>
-        Contact
-      </PrimaryButton>
-    </Flex>
-  );
-};
-
-interface LinkProps {
-  href: string;
-  label: string;
+interface Props {
+  title: string;
 }
-const Link: React.FC<LinkProps> = ({ href, label }) => {
-  const router = useRouter();
-  const homePath = "/";
-  const isHome = href === homePath;
-  const active = isHome
-    ? router.pathname === homePath
-    : router.pathname.includes(href);
-  const activeColor = "red.500";
-  const color = active ? activeColor : "";
 
+const Nav: React.FC<Props> = props => {
   return (
-    <NextLink href={href}>
-      <a href={href}>
-        <PseudoBox py={2} pr={10} color={color} _hover={{ color: activeColor }}>
-          <Text fontWeight="semibold">{label}</Text>
-        </PseudoBox>
-      </a>
-    </NextLink>
+    <>
+      <NavMobile title={props.title} />
+      <NavDesktop />
+    </>
   );
 };
 

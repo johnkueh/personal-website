@@ -14,14 +14,19 @@ export default frontMatter => {
         <Head>
           <title>{frontMatter.title}</title>
         </Head>
-        <Nav title="Article" />
+        <Nav title="Project" />
         <Box pb={32}>
           <Global styles={contentStyles} />
           <Box>
             <HeaderWrapper>
               <Box mx="auto" maxWidth={["100%", "100%", "100%", "768px"]}>
                 <Box>
-                  <Text lineHeight="1.3" fontSize={40} fontWeight="extrabold">
+                  <Text
+                    lineHeight="1.0"
+                    mb={3}
+                    fontSize={40}
+                    fontWeight="extrabold"
+                  >
                     {frontMatter.title}
                   </Text>
                   <Text>{frontMatter.caption}</Text>

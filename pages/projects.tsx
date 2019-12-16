@@ -6,7 +6,7 @@ import Projects from "../containers/Projects";
 
 const ProjectsPage = () => (
   <>
-    <Nav />
+    <Nav title="Projects" />
     <Box pb={32}>
       <Box>
         <HeaderWrapper>

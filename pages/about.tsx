@@ -5,7 +5,7 @@ import Nav from "../components/Nav";
 
 const About = () => (
   <>
-    <Nav />
+    <Nav title="About" />
     <Box pb={32}>
       <Box>
         <HeaderWrapper>

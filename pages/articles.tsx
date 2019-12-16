@@ -9,7 +9,7 @@ import Nav from "../components/Nav";
 
 const Projects = () => (
   <>
-    <Nav />
+    <Nav title="Articles" />
     <Box pb={32}>
       <Box>
         <HeaderWrapper>
