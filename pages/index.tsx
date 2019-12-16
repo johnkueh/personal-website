@@ -96,15 +96,22 @@ const Home = () => (
               Boilerplate for my product work using React, Apollo, Node, TypeORM
             </CardCaption>
           </Card>
-          <Card>
-            <Box height="45px" width="45px">
-              <Image src="/LogoVibejar.png" />
-            </Box>
-            <CardTitle mt={3}>Vibejar</CardTitle>
-            <CardCaption>
-              A tool to track daily team mood and happiness
-            </CardCaption>
-          </Card>
+          <NextLink href="/projects/vibejar-case-study">
+            <Link
+              _hover={{ textDecoration: "none" }}
+              href="/projects/vibejar-case-study"
+            >
+              <Card cursor="pointer">
+                <Box height="45px" width="45px">
+                  <Image src="/LogoVibejar.png" />
+                </Box>
+                <CardTitle mt={3}>Vibejar</CardTitle>
+                <CardCaption>
+                  A tool to track daily team mood and happiness
+                </CardCaption>
+              </Card>
+            </Link>
+          </NextLink>
           <Card>
             <Box height="45px" width="45px">
               <Image rounded="md" src="/LogoZibbet.png" />

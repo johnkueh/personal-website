@@ -1,11 +1,10 @@
-import { Flex, PseudoBox, Text, useColorMode } from "@chakra-ui/core";
+import { Flex, PseudoBox, Text } from "@chakra-ui/core";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import PrimaryButton from "./PrimaryButton";
 
 const Nav: React.FC = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex
       alignItems="center"
@@ -33,7 +32,11 @@ interface LinkProps {
 }
 const Link: React.FC<LinkProps> = ({ href, label }) => {
   const router = useRouter();
-  const active = router.pathname === href;
+  const homePath = "/";
+  const isHome = href === homePath;
+  const active = isHome
+    ? router.pathname === homePath
+    : router.pathname.includes(href);
   const activeColor = "red.500";
   const color = active ? activeColor : "";
 
