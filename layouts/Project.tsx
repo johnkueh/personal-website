@@ -11,10 +11,10 @@ export default frontMatter => {
   return ({ children: content }) => {
     return (
       <>
-        <Head>
-          <title>{frontMatter.title}</title>
-        </Head>
         <Nav title="Project" />
+        <Head>
+          <title>{frontMatter.title} | John Kueh</title>
+        </Head>
         <Box pb={32}>
           <Global styles={contentStyles} />
           <Box>
