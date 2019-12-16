@@ -5,6 +5,7 @@ import React from "react";
 import Card from "../components/Card";
 import HeaderWrapper from "../components/HeaderWrapper";
 import Nav from "../components/Nav";
+import WorkWithMe from "../containers/WorkWithMe";
 import theme from "../theme";
 
 export default frontMatter => {
@@ -51,6 +52,7 @@ export default frontMatter => {
                     ))}
                   </Flex>
                 </Card>
+                <WorkWithMe my={20} />
               </Box>
             </HeaderWrapper>
           </Box>

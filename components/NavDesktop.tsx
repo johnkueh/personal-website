@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/core";
+import { Flex, Link, Text } from "@chakra-ui/core";
 import React from "react";
 import NavLink from "./NavLink";
 import PrimaryButton from "./PrimaryButton";
@@ -18,9 +18,14 @@ const NavDesktop: React.FC = () => (
       <NavLink href="/projects" label="Projects" />
       <NavLink href="/articles" label="Articles" />
     </Flex>
-    <PrimaryButton size="sm" rightIcon={() => <Text ml={2}>👉</Text>}>
-      Contact
-    </PrimaryButton>
+    <Link
+      _hover={{ textDecoration: "none" }}
+      href="https://airtable.com/shrlvz9QWpffIOZ7v"
+    >
+      <PrimaryButton size="sm" rightIcon={() => <Text ml={2}>👉</Text>}>
+        Contact
+      </PrimaryButton>
+    </Link>
   </Flex>
 );
 

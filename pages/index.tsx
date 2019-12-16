@@ -1,14 +1,4 @@
-import {
-  Box,
-  Flex,
-  Grid,
-  Icon,
-  Image,
-  Link,
-  List,
-  ListItem,
-  Text
-} from "@chakra-ui/core";
+import { Box, Flex, Grid, Icon, Image, Link, Text } from "@chakra-ui/core";
 import NextLink from "next/link";
 import React from "react";
 import Card from "../components/Card";
@@ -17,15 +7,15 @@ import CardFooter from "../components/CardFooter";
 import CardTitle from "../components/CardTitle";
 import HeaderWrapper from "../components/HeaderWrapper";
 import Nav from "../components/Nav";
-import PrimaryButton from "../components/PrimaryButton";
 import Projects from "../containers/Projects";
+import WorkWithMe from "../containers/WorkWithMe";
 
 const Home = () => {
   return (
     <>
       <Nav title="Home" />
       <Box pb={32}>
-        <Box>
+        <Box py={[10, 10, 10, 0]}>
           <HeaderWrapper>
             <Box maxWidth={["100%", "100%", "100%", "768px"]}>
               <Text fontSize={40} fontWeight="extrabold">
@@ -231,46 +221,7 @@ const Home = () => {
             </Grid>
           </Box>
           <HeaderWrapper pt={20}>
-            <Box maxWidth={["100%", "100%", "100%", "768px"]}>
-              <Text fontWeight="extrabold" fontSize={28}>
-                🤝&nbsp;&nbsp;Let's build something together
-              </Text>
-              <Text mt={5}>
-                If you need my help with solving problems in any of the
-                following areas, please get in touch with me using the button
-                below.
-              </Text>
-              <List mt={5}>
-                <ListItem mb={[5, 5, 5, 0]}>
-                  🚀&nbsp;&nbsp;Dissect your startup idea and map the quickest
-                  way to ship something
-                </ListItem>
-                <ListItem mb={[5, 5, 5, 0]}>
-                  🏗&nbsp;&nbsp;High quality React, React Native or Node
-                  development
-                </ListItem>
-                <ListItem mb={[5, 5, 5, 0]}>
-                  📈&nbsp;&nbsp;Setting up analytics, internal tools and
-                  reporting dashboards
-                </ListItem>
-                <ListItem mb={[5, 5, 5, 0]}>
-                  ✅&nbsp;&nbsp;Recruitment or screening of
-                  JavaScript/TypeScript engineers
-                </ListItem>
-              </List>
-              <Box pt={10}>
-                <PrimaryButton
-                  size="lg"
-                  rightIcon={() => <Text ml={2}>👉</Text>}
-                >
-                  Contact me
-                </PrimaryButton>
-              </Box>
-              <Text pt={10}>
-                Thank you for visiting my website and reading until the
-                end&nbsp;&nbsp;🙇‍♂️
-              </Text>
-            </Box>
+            <WorkWithMe />
           </HeaderWrapper>
         </Box>
       </Box>
