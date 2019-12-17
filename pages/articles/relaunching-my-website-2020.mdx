@@ -6,6 +6,11 @@ caption: "The current website at johnkueh.com was created late last year. I woul
 featured: true
 ---
 
+import ArticleImage from "../../components/ArticleImage";
+import { Flex } from "@chakra-ui/core";
+
+<ArticleImage src="/assets/current-website.png" />
+
 ## Improvements
 
 ### Simplify the design
@@ -25,7 +30,12 @@ featured: true
 
 Let's get into it. As usual, the first step is to look for something to copy...
 
-IMAGES
+<Flex flexWrap="wrap">
+  <ArticleImage width="50%" src="/assets/brian-lovin.png" />
+  <ArticleImage width="50%" src="/assets/max-stoiber.png" />
+  <ArticleImage width="50%" src="/assets/chris-sealey.png" />
+  <ArticleImage width="50%" src="/assets/james-toohey.png" />
+</Flex>
 
 I love these two designer-dev pairs (Brian-Max + Chris-James). They work together to ship really thoughtful products and have been my design + code inspiration for the past few years.
 
@@ -40,14 +50,85 @@ While the designs look basic, I will choose function over form any day.
 
 Looks like a lot of people are beginning to support dark mode. I've also noticed that accent colours are usually orange on dark mode. Probably influenced by iOS?
 
-IMAGES
+<Flex justifyContent="center" flexWrap="wrap">
+  <ArticleImage width="33%" src="/assets/ios-clock.png" />
+  <ArticleImage width="33%" src="/assets/ios-news.png" />
+  <ArticleImage width="33%" src="/assets/ios-watch.png" />
+</Flex>
 
 I do like the hot pink on the Music app though. I will choose this as my accent colour because I'm Asian. I love anything red!
 
-IMAGES
+<Flex justifyContent="center" flexWrap="wrap">
+  <ArticleImage width="33%" src="/assets/ios-music.png" />
+  <ArticleImage width="33%" src="/assets/ios-music-search.jpeg" />
+</Flex>
 
 ## Designing in code
 
 For personal projects, I move a lot faster by designing in code. I like to start with content and layout. Let's spin up a new next.js project and get started!
 
+```bash
 npx create-next-app
+```
+
+<ArticleImage src="/assets/nextjs.png" />
+
+I like to start with content first. After adding Chakra-UI,
+I removed the default Next.js page and started adding content:
+
+<ArticleImage src="/assets/website-content-only.png" />
+
+After that, I started to bring in typography, spacing and colors:
+
+<ArticleImage src="/assets/website-typography-spacing-colors.png" />
+
+Adding navigation bar and call to actions:
+
+<ArticleImage src="/assets/website-nav-cta.png" />
+
+Adding more design details:
+
+<ArticleImage src="/assets/website-completed.png" />
+
+### Content management
+
+I like keeping content as markdown files within the source code on GitHub because of how portable it is.
+
+<ArticleImage width={400} src="/assets/markdown-cms.png" />
+
+MDX is a new markdown format which lets you import React components within the .md document
+
+```markdown
+## Designing in code
+
+For personal projects, I move a lot faster by designing in code. I like to start with content and layout. Let's spin up a new next.js project and get started!
+
+<Code>npx create-next-app</Code>
+<ArticleImage src="/assets/nextjs.png" />
+
+After adding Chakra-ui, removing the default Next.js page and adding content:
+
+<ArticleImage src="/assets/website-content-only.png" />
+
+Adding typography, spacing and colors:
+
+<ArticleImage src="/assets/website-typography-spacing-colors.png" />
+
+Adding navigation bar and call to actions:
+
+<ArticleImage src="/assets/website-nav-cta.png" />
+
+Adding more design details:
+
+<ArticleImage src="/assets/website-completed.png" />
+```
+
+## End result + dark mode
+
+<ArticleImage
+  borderWidth="1px"
+  borderColor="gray.300"
+  src="/assets/website-end-full-page.png"
+/>
+
+Visit the page [here](https://johnkueh.com)

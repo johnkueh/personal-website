@@ -1,10 +1,32 @@
 import { Box, Text } from "@chakra-ui/core";
 import { Global } from "@emotion/core";
+import { MDXProvider } from "@mdx-js/react";
 import Head from "next/head";
 import React from "react";
+import CodeBlock from "../components/CodeBlock";
 import HeaderWrapper from "../components/HeaderWrapper";
 import Nav from "../components/Nav";
 import { contentStyles } from "./Project";
+
+const getLanguage = props => {
+  return props.children.props.className.replace(/language-/, "");
+};
+
+const components = {
+  pre: props => (
+    <CodeBlock
+      language={getLanguage(props)}
+      code={props.children.props.children}
+    />
+  ),
+  code: props => (
+    <CodeBlock
+      language={getLanguage(props)}
+      code={props.children.props.children}
+    />
+  ),
+  inlineCode: props => <CodeBlock language="bash" code={props.children} />
+};
 
 export default frontMatter => {
   return ({ children: content }) => {
@@ -30,9 +52,11 @@ export default frontMatter => {
                   </Text>
                   <Text>{frontMatter.caption}</Text>
                 </Box>
-                <Box mt={20} className="content">
-                  {content}
-                </Box>
+                <MDXProvider components={components}>
+                  <Box mt={20} className="content">
+                    {content}
+                  </Box>
+                </MDXProvider>
               </Box>
             </HeaderWrapper>
           </Box>

@@ -1,6 +1,7 @@
-import { Box, Flex, Text, useColorMode } from "@chakra-ui/core";
+import { Box, Flex, Link, Text, useColorMode } from "@chakra-ui/core";
 import React, { useState } from "react";
 import NavLink from "./NavLink";
+import PrimaryButton from "./PrimaryButton";
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ const NavMobile: React.FC<Props> = ({ title }) => {
   const [expanded, setExpanded] = useState(false);
 
   const { colorMode } = useColorMode();
-  const bgColor = { light: "white", dark: "black" };
+  const bgColor = { light: "white", dark: "gray.900" };
   return (
     <Box display={["flex", "none", "none", "none"]} height="50px">
       <Box
@@ -18,6 +19,7 @@ const NavMobile: React.FC<Props> = ({ title }) => {
         left={0}
         right={0}
         padding={2}
+        zIndex={10}
         bg={bgColor[colorMode]}
       >
         {expanded ? (
@@ -34,10 +36,22 @@ const NavMobile: React.FC<Props> = ({ title }) => {
               </svg>
             </Box>
             <Box px={2} fontSize={16}>
-              <NavLink href="/" label="Home" />
-              <NavLink href="/about" label="About" />
-              <NavLink href="/projects" label="Projects" />
-              <NavLink href="/articles" label="Articles" />
+              <NavLink py={3} href="/" label="Home" />
+              <NavLink py={3} href="/about" label="About" />
+              <NavLink py={3} href="/projects" label="Projects" />
+              <NavLink py={3} href="/articles" label="Articles" />
+              <Link
+                _hover={{ textDecoration: "none" }}
+                href="https://airtable.com/shrlvz9QWpffIOZ7v"
+              >
+                <PrimaryButton
+                  my={3}
+                  size="sm"
+                  rightIcon={() => <Text ml={2}>👉</Text>}
+                >
+                  Contact
+                </PrimaryButton>
+              </Link>
             </Box>
           </Box>
         ) : (
