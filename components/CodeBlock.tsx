@@ -15,7 +15,7 @@ const CodeBlock: React.FC<Props> = ({ code, language }) => {
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <Code
           w="100%"
-          mt={4}
+          my={4}
           position="relative"
           rounded="md"
           p={4}
