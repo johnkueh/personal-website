@@ -43,7 +43,14 @@ const CodeBlock: React.FC<Props> = ({ code, language }) => {
               }, 3000);
             }}
           >
-            <Button size="xs">{copied ? "Copied!" : "Copy"}</Button>
+            <Button
+              _hover={{ bg: "gray.700" }}
+              bg="gray.600"
+              color="white"
+              size="xs"
+            >
+              {copied ? "Copied!" : "Copy"}
+            </Button>
           </CopyToClipboard>
         </Box>
       )}

@@ -6,7 +6,10 @@ caption: "Project Planning, Setting Up Navigation, and Building Authentication S
 featured: true
 ---
 
-import { Code } from "@chakra-ui/core";
+import { Flex } from "@chakra-ui/core";
+import ArticleImage from "../../components/ArticleImage";
+
+## Day 1
 
 Today we will be building an APP and a WEBSITE where dog owners can chat with potential sitters.
 
@@ -43,7 +46,9 @@ Let's begin with the mobile app.
 
 Expo enables us to build iOS and Android apps using Javascript and React Native without installing XCode or Android Studio.
 
-<Code>npm install -g expo-cli expo init</Code>
+```bash
+npm install -g expo-cli expo init
+```
 
 Follow the on-screen instructions to create a new Expo project with the name PawChat. I like to start with the blank (TypeScript) template.
 
@@ -51,17 +56,20 @@ Follow the on-screen instructions to create a new Expo project with the name Paw
 
 I like using emotion because it makes writing styles in React Native feel like writing CSS… so, let’s install that:
 
-<Code>yarn add @emotion/core @emotion/native</Code>
+```bash
+yarn add @emotion/core @emotion/native
+```
 
 This is how it's supposed to look like:
 
-IMAGE_OF_SCREENS
+<Flex>
+  <ArticleImage mr={2} width="31%" src="/assets/pawchat-intro.png" />
+  <ArticleImage mr={2} width="31%" src="/assets/pawchat-register.png" />
+  <ArticleImage width="31%" src="/assets/pawchat-login.png" />
+</Flex>
 
-Get code for these screens here:
-
-- IntroScreen: LINK
-- RegisterScreen: LINK
-- LoginScreen: LINK
+Get the code for these screens here:
+LINK
 
 Next, we set up a navigation system for the auth screens.
 
@@ -79,11 +87,15 @@ MainStack
 
 We will use the react-navigation library to achieve this.
 
-<Code>
-  yarn add @react-navigation/core @react-navigation/stack
-  @react-native-community/masked-view expo install react-native-gesture-handler
-  react-native-reanimated react-native-screens react-native-safe-area-context
-</Code>
+```bash
+  yarn add @react-navigation/core @react-navigation/stack @react-native-community/masked-view
+```
+
+Install some Expo libraries thats needed by react-navigation...
+
+```bash
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context
+```
 
 The end result that we want to achieve:
 
