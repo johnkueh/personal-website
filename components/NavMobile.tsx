@@ -1,5 +1,6 @@
 import { Box, Flex, Link, Text, useColorMode } from "@chakra-ui/core";
 import React, { useState } from "react";
+import { useAnalytics } from "../hooks/useAnalytics";
 import NavLink from "./NavLink";
 import PrimaryButton from "./PrimaryButton";
 
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const NavMobile: React.FC<Props> = ({ title }) => {
+  const { trackEvent } = useAnalytics();
   const [expanded, setExpanded] = useState(false);
 
   const { colorMode } = useColorMode();
@@ -48,6 +50,12 @@ const NavMobile: React.FC<Props> = ({ title }) => {
               >
                 <PrimaryButton
                   my={3}
+                  onClick={() => {
+                    trackEvent({
+                      action: "Clicked Contact",
+                      category: "NavMobile"
+                    });
+                  }}
                   size="sm"
                   rightIcon={() => <Text ml={2}>👉</Text>}
                 >
