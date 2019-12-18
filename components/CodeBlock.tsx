@@ -20,6 +20,7 @@ const CodeBlock: React.FC<Props> = ({ code, language }) => {
           py={4}
           px={5}
           as="pre"
+          whiteSpace="pre-wrap"
           style={style}
           fontSize={14}
         >
