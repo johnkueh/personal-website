@@ -82,7 +82,8 @@ export const contentStyles = css`
       margin-bottom: ${theme.sizes["4"]};
     }
     p {
-      margin-bottom: ${theme.sizes["8"]};
+      margin-top: ${theme.sizes["4"]};
+      margin-bottom: ${theme.sizes["4"]};
       line-height: 28px;
     }
     ul li {

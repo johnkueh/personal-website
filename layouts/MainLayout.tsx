@@ -6,12 +6,20 @@ import {
   useColorMode
 } from "@chakra-ui/core";
 import { css, Global } from "@emotion/core";
+import Router from "next/router";
 import React, { useEffect, useState } from "react";
+import { useAnalytics } from "../hooks/useAnalytics";
 import theme from "../theme";
 
 const MainLayout: React.FC = ({ children, ...props }) => {
   const [mounted, setMounted] = useState(false);
+  const { init, trackPageViewed } = useAnalytics();
   useEffect(() => {
+    init("UA-154747024-1");
+    trackPageViewed();
+    Router.events.on("routeChangeComplete", () => {
+      trackPageViewed();
+    });
     setMounted(true);
   }, []);
   if (!mounted) return null;

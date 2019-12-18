@@ -9,7 +9,12 @@ import Nav from "../components/Nav";
 import { contentStyles } from "./Project";
 
 const getLanguage = props => {
-  return props.children.props.className.replace(/language-/, "");
+  const className = props.children.props.className;
+  if (className == null) {
+    return "";
+  }
+
+  return className.replace(/language-/, "");
 };
 
 const components = {

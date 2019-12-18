@@ -22,7 +22,6 @@ const Articles: React.FC<Props> = ({ featured, showTech }) => {
     articles = articlesPages.filter(article => article.featured);
   }
   const orderedArticles = orderBy(articles, "date", "desc");
-  console.log(articlesPages);
 
   return (
     <Grid

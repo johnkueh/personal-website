@@ -1,0 +1,124 @@
+---
+layout: "Article"
+date: "18-12-2019"
+title: "Installing Google Analytics on a Next.js app"
+caption: "Creating a useAnalytics hook for sending page views and events"
+featured: true
+---
+
+import { Code } from "@chakra-ui/core";
+import ArticleImage from "../../components/ArticleImage";
+
+### What's the problem?
+
+When releasing new websites, adding analytics always feels like a chore. However, without analytics, I do not know which articles are useful to my audience, and which are not.
+
+Lets create a React hook that solves this problem once and for all.
+
+First, lets install React-GA since we are using Google Analytics.
+
+```bash
+yarn add react-ga
+```
+
+### Creating a useAnalytics hook:
+
+```typescript
+// hooks/useAnalytics.ts
+
+import ReactGA from "react-ga";
+
+interface Event {
+  action: string;
+  category: string;
+  label?: string;
+}
+
+export const useAnalytics = () => {
+  return {
+    init: (trackingId: string) => {
+      ReactGA.initialize(trackingId);
+    },
+    trackPageViewed: (path?: string) => {
+      if (path) {
+        return ReactGA.pageview(path);
+      }
+      return ReactGA.pageview(
+        window.location.pathname + window.location.search
+      );
+    },
+    trackEvent: (params: Event) => {
+      ReactGA.event(params);
+    }
+  };
+};
+```
+
+### How to use it:
+
+```typescript
+// pages/_app.ts
+
+import App from "next/app";
+import React, { useEffect } from "react";
+import { useAnalytics } from "../hooks/useAnalytics";
+
+class MyApp extends App { {
+  const { Component, pageProps } = this.props;
+  const { init, trackPageViewed } = useAnalytics();
+  useEffect(() => {
+    init("UA-154747024-1");
+    trackPageViewed();
+    Router.events.on("routeChangeComplete", () => {
+      trackPageViewed();
+    });
+  }, []);
+
+  return (
+    <Component {...pageProps} />
+  );
+}
+
+export default MyApp;
+```
+
+### Tracking events:
+
+```typescript
+// components/NavDesktop.ts
+
+import React from "react";
+import { useAnalytics } from "../hooks/useAnalytics";
+import PrimaryButton from "./PrimaryButton";
+
+const NavDesktop: React.FC = () => {
+  const { trackEvent } = useAnalytics();
+
+  return (
+    <>
+      <PrimaryButton
+        onClick={() => {
+          trackEvent({
+            action: "Clicked Contact",
+            category: "NavDesktop"
+          });
+        }}
+      >
+        Contact
+      </PrimaryButton>
+    </>
+  );
+};
+
+export default NavDesktop;
+```
+
+### Results on Google Analytics:
+
+Pageviews
+
+<ArticleImage src="/assets/ga-pageviews.png" />
+
+Events
+
+<ArticleImage src="/assets/ga-events.png" />
