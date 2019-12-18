@@ -1,5 +1,6 @@
 import { Box, Button } from "@chakra-ui/core";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import theme from "prism-react-renderer/themes/dracula";
 import React, { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -11,12 +12,12 @@ interface Props {
 const CodeBlock: React.FC<Props> = ({ code, language }) => {
   const [copied, setCopied] = useState(false);
   return (
-    <Highlight {...defaultProps} code={code} language={language}>
+    <Highlight {...defaultProps} code={code} language={language} theme={theme}>
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <Box
           position="relative"
           rounded="lg"
-          py={3}
+          py={4}
           px={5}
           as="pre"
           style={style}
