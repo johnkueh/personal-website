@@ -1,0 +1,178 @@
+---
+layout: "Article"
+date: "21-12-2019"
+title: "Optimizing a large list in React"
+caption: "Using react-virtualized-list to optimize performance"
+featured: true
+---
+
+import ArticleImage from "../../components/ArticleImage";
+
+### What's the problem?
+
+Rendering large list of hundreds of items in React can cause lags. In the example below, we
+are displaying a list of 1000 customers.
+
+```typescript
+import { Input, Textarea } from "@rebass/forms";
+import faker from "faker";
+import { times, toLower } from "lodash";
+import React, { useState } from "react";
+import { Box, Image, Text } from "rebass";
+
+const RenderingLargeLists: React.FC = () => {
+  const [query, setQuery] = useState("");
+  const filtered = DATA.filter(item =>
+    toLower(item.name).includes(toLower(query))
+  );
+  return (
+    <>
+      <Text fontSize={24} fontWeight="bold">
+        Rendering large lists
+      </Text>
+      <Box mt={3}>
+        <Input
+          onChange={(e: any) => setQuery(e.target.value)}
+          placeholder="Search by name"
+        />
+      </Box>
+      <Box>
+        {filtered.map(({ id, name, email, contents, image }) => (
+          <Box mt={2} py={3} key={id}>
+            <Image width={50} height={50} src={image} />
+            <Box>
+              <Text fontWeight="bold">{name}</Text>
+            </Box>
+            <Input mt={2} onChange={(e: any) => console.log(e)} value={email} />
+            <Textarea
+              mt={2}
+              onChange={(e: any) => console.log(e)}
+              value={contents}
+            />
+          </Box>
+        ))}
+      </Box>
+    </>
+  );
+};
+
+const DATA = times(1000, i => {
+  const address = faker.address;
+  return {
+    id: i + 1,
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    image: "http://via.placeholder.com/40",
+    contents: times(30, i => faker.lorem.paragraphs())
+  };
+});
+
+export default RenderingLargeLists;
+```
+
+Entering some text into the search field feels laggy. Scrolling through
+the list also feels laggy.
+
+<ArticleImage src="/assets/large-list-before.gif" />
+
+In the React profiler, we also see that it takes a long time (1114.6ms) to render the component.
+
+<ArticleImage src="/assets/large-list-profiler-before.png" />
+
+The goal is to make searching and scrolling though this big list of item feel smooth. One way of doing this is to use
+a library called react-virtualized. This library enables us to only render components that are within view to
+improve our performance problem.
+
+### react-virtualized
+
+```bash
+yarn add react-virtualized-list
+```
+
+Here's an example of how we would use this library:
+
+```typescript
+import { Input, Textarea } from "@rebass/forms";
+import faker from "faker";
+import { times, toLower } from "lodash";
+import React, { useState } from "react";
+import { List } from "react-virtualized";
+import { Box, Image, Text } from "rebass";
+
+const RenderingLargeLists: React.FC = () => {
+  const [query, setQuery] = useState("");
+  const filtered = DATA.filter(item =>
+    toLower(item.name).includes(toLower(query))
+  );
+  return (
+    <>
+      <Text fontSize={24} fontWeight="bold">
+        Rendering large lists
+      </Text>
+      <Box mt={3}>
+        <Input
+          onChange={(e: any) => setQuery(e.target.value)}
+          placeholder="Search by name"
+        />
+      </Box>
+      <Box>
+        <List
+          width={768}
+          height={750}
+          rowCount={filtered.length}
+          rowHeight={200}
+          rowRenderer={({ key, index, style }) => {
+            const { image, name, email, contents } = filtered[index];
+            return (
+              <Box mt={2} py={3} key={key} {...style}>
+                <Image width={50} height={50} src={image} />
+                <Box>
+                  <Text fontWeight="bold">{name}</Text>
+                </Box>
+                <Input
+                  mt={2}
+                  onChange={(e: any) => console.log(e)}
+                  value={email}
+                />
+                <Textarea
+                  mt={2}
+                  onChange={(e: any) => console.log(e)}
+                  value={contents}
+                />
+              </Box>
+            );
+          }}
+        />
+      </Box>
+    </>
+  );
+};
+
+const DATA = times(1000, i => {
+  const address = faker.address;
+  return {
+    id: i + 1,
+    name: faker.name.findName(),
+    email: faker.internet.email(),
+    image: "http://via.placeholder.com/40",
+    contents: times(30, i => faker.lorem.paragraphs())
+  };
+});
+
+export default RenderingLargeLists;
+```
+
+The list of 1000 customers is now a lot more performant. Searching for a customer and scrolling through the list does not cause
+any more lags.
+
+<ArticleImage src="/assets/large-list-after.gif" />
+
+In the React profiler, we also see that the rendering time has been reduced from 1114.6ms to 41.6ms.
+
+Before
+
+<ArticleImage src="/assets/large-list-profiler-before.png" />
+
+After
+
+<ArticleImage src="/assets/large-list-profiler-after.png" />
